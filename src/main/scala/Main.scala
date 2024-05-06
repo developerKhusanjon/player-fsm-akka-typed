@@ -1,6 +1,7 @@
 import PlayerCommands.EmptyCommand
 import akka.actor.typed.ActorSystem
 import akka.util.Timeout
+import com.typed.player.models.Player
 
 import scala.concurrent.duration.DurationInt
 

@@ -1,5 +1,6 @@
 import PlayerCommands._
 import akka.actor.typed.ActorRef
+import com.typed.player.models.Player
 
 object PlayerReplies {
 
