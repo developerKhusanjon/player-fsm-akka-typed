@@ -1,3 +1,5 @@
+package com.typed.player.player_behaviors.protocols
+
 import PlayerCommands._
 import akka.actor.typed.ActorRef
 import com.typed.player.models.Player
@@ -8,6 +10,9 @@ object PlayerReplies {
     def state: Player
   }
 
+  case class PlayToggled(state: Player) extends Reply
+  case class ShuffleToggled(state: Player) extends Reply
+
   sealed trait SkippedReply extends Reply
   case class SkippedFromFirst(state: Player, replyTo: ActorRef[MiddleTrackCommand]) extends SkippedReply
   case class Skipped(state: Player) extends SkippedReply
@@ -15,8 +20,8 @@ object PlayerReplies {
 
   sealed trait SkippedBackReply extends Reply
   case class SkippedBackFromLastTrack(state: Player, replyTo: ActorRef[MiddleTrackCommand]) extends SkippedBackReply
-  case class SKippedBack(state: Player) extends SkippedBackReply
-  case class SkippedBackFirst(state: Player, replyTo: ActorRef[FirstTrackCommand]) extends SkippedBackReply
+  case class SkippedBack(state: Player) extends SkippedBackReply
+  case class SkippedBackToFirst(state: Player, replyTo: ActorRef[FirstTrackCommand]) extends SkippedBackReply
 
   case class FirstTrackEnqueued(state: Player, replyTo: ActorRef[OnlyTrackCommand]) extends Reply
   case class SecondTrackEnqueued(state: Player, replyTo: ActorRef[FirstTrackCommand]) extends Reply
